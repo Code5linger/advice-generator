@@ -4,11 +4,29 @@ function App() {
   const [advice, setAdvice] = useState('');
   const [count, setCount] = useState(0);
 
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   async function getAdvice() {
-    const response = await fetch('https://api.adviceslip.com/advice');
-    const data = await response.json();
-    setAdvice(data.slip.advice);
-    setCount((c) => c + 1);
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await fetch('https://api.adviceslip.com/advice');
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setAdvice(data.slip.advice);
+      setCount((prevCount) => prevCount + 1);
+    } catch (err) {
+      setError(err.message);
+      console.error('Failed to fetch advice:', err);
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   useEffect(() => {
@@ -17,8 +35,11 @@ function App() {
 
   return (
     <div>
-      <h1>{advice}</h1>
-      <button onClick={() => getAdvice()}>Get Advice</button>
+      {isLoading ? <h1>Loading advice...</h1> : <h1>{advice}</h1>}
+      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+      <button onClick={getAdvice} disabled={isLoading}>
+        {isLoading ? 'Fetching...' : 'Get Advice'}
+      </button>
       <p>
         You have read <strong>{count}</strong> advices!
       </p>
