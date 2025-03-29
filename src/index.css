@@ -1,25 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     display: grid;
     place-content: center;
     height: 100vh;
     overflow: hidden;
-    background: #C68EFD;
+    background: black;
     color: black;
 }
 
 div {
     width: 40rem;
     text-align: center;
-    background: #8F87F1;
+    background: gainsboro;
     border-radius: .5rem;
+
 }
 
 h1 {
+    /* padding: 0 1rem; */
+
+}
+
+
+.adivce {
     display: grid;
     place-content: center;
     height: 10rem;
     text-align: center;
-    padding: 0 1rem;
+
 }
 
 button {
