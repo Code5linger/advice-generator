@@ -1,0 +1,23 @@
+body {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    overflow: hidden;
+    background: black;
+    color: wheat;
+}
+
+div {
+    width: 40rem;
+    text-align: center;
+    background: gray;
+    border-radius: .5rem;
+}
+
+h1 {
+    display: grid;
+    place-content: center;
+    background: crimson;
+    height: 10rem;
+    text-align: center;
+}
