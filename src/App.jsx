@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   const [advice, setAdvice] = useState('');
@@ -12,7 +11,9 @@ function App() {
     setCount((c) => c + 1);
   }
 
-  useEffect(() => getAdvice, []);
+  useEffect(() => {
+    getAdvice();
+  }, []);
 
   return (
     <div>
