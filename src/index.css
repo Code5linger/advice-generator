@@ -19,13 +19,8 @@ div {
 
 }
 
-h1 {
-    /* padding: 0 1rem; */
 
-}
-
-
-.adivce {
+.advice {
     display: grid;
     place-content: center;
     height: 10rem;
